@@ -246,8 +246,9 @@ for ep in range(epochs):
     t2 = default_timer()
     print(ep, t2 - t1, train_mse / len(data_train), train_l2 / len(data_train))
     ttrain[ep] = train_l2 / len(data_train)
+    torch.save(model, path_model)
 
-torch.save(model, path_model)
+
 
 ########################################################################
 #
