@@ -1720,7 +1720,8 @@ def multi_pole_grid1d(theta, theta_d, s,  N, is_periodic=False):
         theta_l = theta[:,:,:theta_d].reshape(N, s, theta_d)
         theta_l = theta_l[:, ::r_l,  :]
         theta_l = theta_l.reshape(N, n_l, theta_d)
-        theta_l = torch.tensor(theta_l, dtype=torch.float)
+        # theta_l = torch.tensor(theta_l, dtype=torch.float)
+        theta_l = theta_l.clone().detach()
         print(theta_l.shape)
         theta_list.append(theta_l)
 
