@@ -1,0 +1,94 @@
+/home/mvdhnm/torch_env/lib/python3.11/site-packages/torch/nn/functional.py:3782: UserWarning: nn.functional.upsample is deprecated. Use nn.functional.interpolate instead.
+  warnings.warn("nn.functional.upsample is deprecated. Use nn.functional.interpolate instead.")
+9
+level 1024 1 1024
+torch.Size([1024])
+torch.Size([1024, 1024, 1])
+edge torch.Size([2, 2048])
+edge_inter torch.Size([2, 3066])
+level 512 2 512
+torch.Size([512])
+torch.Size([1024, 512, 1])
+edge_inter torch.Size([2, 1530])
+level 256 4 256
+torch.Size([256])
+torch.Size([1024, 256, 1])
+edge_inter torch.Size([2, 762])
+level 128 8 128
+torch.Size([128])
+torch.Size([1024, 128, 1])
+edge_inter torch.Size([2, 378])
+level 64 16 64
+torch.Size([64])
+torch.Size([1024, 64, 1])
+edge_inter torch.Size([2, 186])
+level 32 32 32
+torch.Size([32])
+torch.Size([1024, 32, 1])
+edge_inter torch.Size([2, 90])
+level 16 64 16
+torch.Size([16])
+torch.Size([1024, 16, 1])
+edge_inter torch.Size([2, 42])
+level 8 128 8
+torch.Size([8])
+torch.Size([1024, 8, 1])
+edge_inter torch.Size([2, 18])
+level 4 256 4
+torch.Size([4])
+torch.Size([1024, 4, 1])
+edge_inter torch.Size([2, 16])
+9 10 9
+9
+level 1024 1 1024
+torch.Size([1024])
+torch.Size([100, 1024, 1])
+edge torch.Size([2, 2048])
+edge_inter torch.Size([2, 3066])
+level 512 2 512
+torch.Size([512])
+torch.Size([100, 512, 1])
+edge_inter torch.Size([2, 1530])
+level 256 4 256
+torch.Size([256])
+torch.Size([100, 256, 1])
+edge_inter torch.Size([2, 762])
+level 128 8 128
+torch.Size([128])
+torch.Size([100, 128, 1])
+edge_inter torch.Size([2, 378])
+level 64 16 64
+torch.Size([64])
+torch.Size([100, 64, 1])
+edge_inter torch.Size([2, 186])
+level 32 32 32
+torch.Size([32])
+torch.Size([100, 32, 1])
+edge_inter torch.Size([2, 90])
+level 16 64 16
+torch.Size([16])
+torch.Size([100, 16, 1])
+edge_inter torch.Size([2, 42])
+level 8 128 8
+torch.Size([8])
+torch.Size([100, 8, 1])
+edge_inter torch.Size([2, 18])
+level 4 256 4
+torch.Size([4])
+torch.Size([100, 4, 1])
+edge_inter torch.Size([2, 16])
+9 10 9
+0 57.88333151699044 11.17248804515657 1.1314608589891577
+Traceback (most recent call last):
+  File "/home/mvdhnm/graph-pde-maanav/multipole-graph-neural-operator/MGKN_orthogonal_burgers1d.py", line 249, in <module>
+    torch.save(model, path_model)
+  File "/home/mvdhnm/torch_env/lib/python3.11/site-packages/torch/serialization.py", line 628, in save
+    with _open_zipfile_writer(f) as opened_zipfile:
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mvdhnm/torch_env/lib/python3.11/site-packages/torch/serialization.py", line 502, in _open_zipfile_writer
+    return container(name_or_buffer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mvdhnm/torch_env/lib/python3.11/site-packages/torch/serialization.py", line 473, in __init__
+    super().__init__(torch._C.PyTorchFileWriter(self.name))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Parent directory model does not exist.
