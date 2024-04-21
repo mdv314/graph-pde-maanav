@@ -210,10 +210,8 @@ for j in range(ntest):
 
 # print('use pre-train model')
 # model = torch.load('model/multipole_burgersR10_s8192_ntrain1024_kerwidth1024')
-
+print("TRANING PHASE")
 model = MGKN(width, ker_width, depth, edge_features, in_width=node_features, s=s).cuda()
-
-
 
 optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate, weight_decay=5e-4)
 scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=scheduler_step, gamma=scheduler_gamma)
@@ -244,7 +242,7 @@ for ep in range(epochs):
 
     scheduler.step()
     t2 = default_timer()
-    print(ep, t2 - t1, train_mse / len(data_train), train_l2 / len(data_train))
+    print(f"epoch: {ep}, time taken: {t2 - t1}, average mse: {train_mse / len(data_train)}, average L2: {train_l2 / len(data_train)}")
     ttrain[ep] = train_l2 / len(data_train)
     torch.save(model, path_model)
 
@@ -255,8 +253,8 @@ for ep in range(epochs):
 #  Testing
 #
 ########################################################################
-
-
+print()
+print("TESTING PHASE: ")
 model.eval()
 test_l2 = 0.0
 with torch.no_grad():
@@ -264,10 +262,12 @@ with torch.no_grad():
     for i, data in enumerate(data_test):
         X_list, y, edge_index_list, edge_attr_list = data
         out = model(data)
+        print(f"Output: {out}")
         out = u_normalizer.decode(out.view(1, -1))
+        print(f"Normalized output: {out}")
         loss =  myloss(out, y.view(1, -1)).item()
         test_l2 += loss
-        print(i, loss)
+        print(f"iteration: {i}, L2 loss: {loss}")
 
         # resolution = s
         # coeff = test_a[i]
@@ -281,7 +281,7 @@ with torch.no_grad():
 
     t2 = default_timer()
 
-print(epochs, t2 - t1,  test_l2 / ntest)
+print(f"epochs: {epochs}, time taken: {t2 - t1},  average L2: {test_l2 / ntest}")
 ttest[0] = test_l2 / ntest
 
 
